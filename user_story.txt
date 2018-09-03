@@ -1,0 +1,17 @@
+I want to play battle of cards:
+
+- I want trams and Cracow. I love trams and Cracow:)
+- Play with other human or a computer
+- Make me choose number of players, let it be 2-4
+- Deal cards equally among all players
+- Each player should see only his first card 
+- Each player should see how many cards have left among the other players
+- There should be 4 characteristics on each card
+- Player should call one characteristic from his card and compare it with other players
+- Player with highest value of characteristic takes all cards which was involved in battle
+- When ther is a tie, cards which was involved in battle are putted aside and are taken by winner in next round
+- If any of players runs out of cards the game ends
+- Player with the most cards wins
+
+
+
