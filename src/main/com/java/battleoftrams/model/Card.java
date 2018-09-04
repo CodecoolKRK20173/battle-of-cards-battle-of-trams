@@ -15,6 +15,8 @@ public abstract class Card implements Comparable{
         this.kanarCount = characteristics[3];
     }
 
+    abstract String getCardType();
+
     public int getTravelTime() {
         return travelTime;
     }
