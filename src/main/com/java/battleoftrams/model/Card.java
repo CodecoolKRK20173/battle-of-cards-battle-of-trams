@@ -33,7 +33,7 @@ public abstract class Card implements Comparable{
         return kanarCount;
     }
 
-    @Override
+    @Override   // Requires static method getSelectedCharasteristic in Game/Round class
     public int compareTo(Card card) {
         if (Game.getSelectedCharasteristic.equals("travelTime")) {
             return this.travelTime - card.travelTime;
