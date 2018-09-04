@@ -8,11 +8,11 @@ public abstract class Card implements Comparable{
     private int driverRudeness;
     private int kanarCount;
 
-    Card(int travelTime, int zulCount, int driverRudeness, int kanarCount) {
-        this.travelTime = travelTime;
-        this.zulCount = zulCount;
-        this.driverRudeness = driverRudeness;
-        this.kanarCount = kanarCount;
+    Card(int[] characteristics) {
+        this.travelTime = characteristics[0];
+        this.zulCount = characteristics[1];
+        this.driverRudeness = characteristics[2];
+        this.kanarCount = characteristics[3];
     }
 
     public int getTravelTime() {
