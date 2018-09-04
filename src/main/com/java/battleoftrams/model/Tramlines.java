@@ -3,19 +3,19 @@ package main.com.java.battleoftrams.model;
 import java.util.concurrent.ThreadLocalRandom;
 
 public enum Tramlines {
-    Line_8   (1, 10, 1, 10, 1, 10, 1, 10),
-    Line_10  (1, 10, 1, 10, 1, 10, 1, 10),
-    Line_19  (1, 10, 1, 10, 1, 10, 1, 10),
-    Line_24  (1, 10, 1, 10, 1, 10, 1, 10);
+    Line_8   (1, 10, 1, 10, 1, 10, 1, 10),      // These will be varied
+    Line_10  (1, 10, 1, 10, 1, 10, 1, 10),      // These will be varied
+    Line_19  (1, 10, 1, 10, 1, 10, 1, 10),      // These will be varied
+    Line_24  (1, 10, 1, 10, 1, 10, 1, 10);      // These will be varied
 
-    private int minTravelTime;
-    private int maxTravelTime;
-    private int minZulCount;
-    private int maxZulCount;
-    private int minDriverRudeness;
-    private int maxDriverRudeness;
-    private int minKanarCount;
-    private int maxKanarCount;
+    private final int minTravelTime;
+    private final int maxTravelTime;
+    private final int minZulCount;
+    private final int maxZulCount;
+    private final int minDriverRudeness;
+    private final int maxDriverRudeness;
+    private final int minKanarCount;
+    private final int maxKanarCount;
 
     private Tramlines(int minTravelTime, int maxTravelTime,
               int minZulCount, int maxZulCount,
