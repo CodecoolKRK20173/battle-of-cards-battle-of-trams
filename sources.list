@@ -1,9 +1,9 @@
-src/main/com/java/battleoftrams/model/Deck.java
-src/main/com/java/battleoftrams/model/Player.java
-src/main/com/java/battleoftrams/model/Computer.java
-src/main/com/java/battleoftrams/model/Human.java
 src/main/com/java/battleoftrams/model/TramLine10.java
+src/main/com/java/battleoftrams/model/Computer.java
+src/main/com/java/battleoftrams/model/Player.java
+src/main/com/java/battleoftrams/model/Deck.java
+src/main/com/java/battleoftrams/model/Human.java
 src/main/com/java/battleoftrams/model/Card.java
+src/main/com/java/battleoftrams/Main.java
 src/main/com/java/battleoftrams/view/View.java
 src/main/com/java/battleoftrams/controler/Game.java
-src/main/com/java/battleoftrams/Main.java
