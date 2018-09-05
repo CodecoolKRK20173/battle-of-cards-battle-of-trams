@@ -26,6 +26,10 @@ public class View{
         System.out.println("Enter your name (5 characters long)");
     }
 
+    public void printQuestionStatsToCompare(){
+        System.out.println("Choose statistic to compare:");
+    }
+
     public void printStatusOfPlayers(List<Player> listOfPlayers){
         String status = "";
         for (int i = 0; i < numberOfPlayers; i++){
@@ -36,7 +40,6 @@ public class View{
         }
         System.out.println(status);
     }
-
 
 //    Name1 (15)       Name2 (15)       Name3 (15)       Name4 (15) 
 
@@ -75,9 +78,7 @@ public class View{
                     append(border).append(" ");
                 }
             }
-
         }
-        
         
     }
 
@@ -91,6 +92,12 @@ public class View{
         }
 
         return borders.toString();
+    }
+
+    // print na co walczymy
+
+    public String printLogo(){
+        return logo;
     }
 
 }
