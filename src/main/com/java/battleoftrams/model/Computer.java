@@ -11,7 +11,7 @@ public class Computer extends Player{
 
     @Override
     public String selectCharacteristic(){
-        List <String> characteristicsList = Arrays.asList("time", "żulCounter", "driverRudeness", "canarCounter");
+        List <String> characteristicsList = Arrays.asList("travelTime", "zulCount", "driverRudeness", "canarCount");
         Random rand = new Random();
         int randomIndex = rand.nextInt(4);
         characteristicsList.get(randomIndex);
