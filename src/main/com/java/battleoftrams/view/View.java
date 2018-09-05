@@ -3,8 +3,10 @@ package main.com.java.battleoftrams.view;
 import java.util.List;
 
 import main.com.java.battleoftrams.model.Player;
+import main.com.java.battleoftrams.model.Card;
 
 //    Name1 (15)       Name2 (15)       Name3 (15)       Name4 (15) 
+
 // ***************  ***************  ***************  ***************
 // * Line   24   *  * Line   10   *  * Line   19   *  * Line   08   *
 // ***************  ***************  ***************  ***************
@@ -25,12 +27,20 @@ public class View{
         System.out.println("Menu:\n\t 1. Play\n\t 2. How to play\n\t 3. Quit");
     }
 
-    public void printStatus(List<Player> listOfPlayers){
+    public void printQuestionNumberOfPlayers(){
+        System.out.println("Enter number of players (max 4): ");
+    }
+
+    public void printQuestionPlayerName(){
+        System.out.println("Enter your name (5 characters long)");
+    }
+
+    public void printStatusOfPlayers(List<Player> listOfPlayers){
         String status = "";
         for (int i = 0; i < numberOfPlayers; i++){
             status += String.format("%s %5s %s %2d %s %4s ", 
             whiteSpace, listOfPlayers.get(i).getName(), 
-            leftBracket, listOfPlayers.get(i).getListSize(), 
+            leftBracket, listOfPlayers.get(i).getPlayerDeckSize(), 
             rightBracket, whiteSpace);
         }
         System.out.println(status);
@@ -39,7 +49,9 @@ public class View{
     public void printCards(List<Player> listOfPlayers){
         StringBuilder table = StringBuilder();
         table.append(cardBorders()).append("\n");
-        table.append(border).append(" ").append(listOfPlayers.get(0).getClass().toString()).append("  ").append(border).append(" ");
+        table.append(border).append(" LINE   ")
+        .append(listOfPlayers.get(0).getPlayerDeck().get(0).getCardType())
+        .append("  ").append(border).append(" ");
         
     }
 
