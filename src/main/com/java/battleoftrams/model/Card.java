@@ -1,6 +1,7 @@
 package main.com.java.battleoftrams.model;
 
 import main.com.java.battleoftrams.controler.Game;
+import main.com.java.battleoftrams.controler.Round;
 
 public abstract class Card implements Comparable{
     private int travelTime;
@@ -37,13 +38,13 @@ public abstract class Card implements Comparable{
     public int compareTo(Object object) {
         Card card = (Card) object;
 
-        if (Game.getSelectedCharasteristic.equals("travelTime")) {
+        if (Round.getSelectedCharasteristic.equals("travelTime")) {
             return this.travelTime - card.travelTime;
-        } else if (Game.getSelectedCharasteristic.equals("zulCount")) {
+        } else if (Round.getSelectedCharasteristic.equals("zulCount")) {
             return this.zulCount - card.zulCount;
-        } else if (Game.getSelectedCharasteristic.equals("driverRudeness")) {
+        } else if (Round.getSelectedCharasteristic.equals("driverRudeness")) {
             return this.driverRudeness - card.driverRudeness;
-        } else if (Game.getSelectedCharasteristic.equals("kanarCount")) {
+        } else if (Round.getSelectedCharasteristic.equals("kanarCount")) {
             return this.kanarCount - card.kanarCount;
         }
     }

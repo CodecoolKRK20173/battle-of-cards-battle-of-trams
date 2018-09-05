@@ -6,7 +6,7 @@ import main.com.java.battleoftrams.model.Computer;
 import main.com.java.battleoftrams.model.Human;
 import main.com.java.battleoftrams.model.Player;
 
-public class Game{
+public class Game {
 
     private LinkedList<Player> playersList;
 
@@ -18,21 +18,21 @@ public class Game{
         this.playersList = playersList;
     }
 
-    public int getNumberOfPlayers(){
+    public int getNumberOfPlayers() {
         return playersList.size();
     }
 
-    public void createPlayers(int numberOfHumanPlayers){
-        for(int i = 0; i < numberOfHumanPlayers; i++){ 
+    public void createPlayers(int numberOfHumanPlayers) {
+        for (int i = 0; i < numberOfHumanPlayers; i++) {
             playersList.add(new Human());
         }
 
-        for(int i = 0; i < 4-numberOfHumanPlayers; i++){
+        for (int i = 0; i < 4 - numberOfHumanPlayers; i++) {
             playersList.add(new Computer());
         }
     }
 
-    public Player getFirstRanomPlayer(){
+    public Player getFirstRanomPlayer() {
         Random rand = new Random();
         int randomIndex = rand.nextInt(4);
         Player randomPlayer = playersList.get(randomIndex);
@@ -40,6 +40,4 @@ public class Game{
         return randomPlayer;
     }
 
-
-    
 }

@@ -1,3 +1,5 @@
+package main.com.java.battleoftrams.model;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
