@@ -1,5 +1,7 @@
 package main.com.java.battleoftrams.model;
 
+import main.com.java.battleoftrams.controler.Round;
+
 public class Human extends Player{
 
     public Human(){
@@ -8,7 +10,7 @@ public class Human extends Player{
 
     @Override
     public String selectCharacteristic(){
-        return selectedCharacteristic;
+        return Round.selectCharacteristic;
     }
     
 }
