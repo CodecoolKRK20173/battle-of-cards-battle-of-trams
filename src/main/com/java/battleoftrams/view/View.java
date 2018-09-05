@@ -51,6 +51,7 @@ public class View{
 
     public void printCards(List<Player> listOfPlayers){
         StringBuilder table = new StringBuilder();
+        String [] stats = {" Time   ", " Żule   ", " MRF    ", " Kanary "};
         table.append(cardBorders()).append("\n");
         for (int i = 0; i < numberOfPlayers; i++){
             table.append(border).append(" LINE   ")
@@ -59,7 +60,23 @@ public class View{
         }
         table.append("\n");
         table.append(cardBorders());
+        table.append("\n");
+        for (int j = 0; j < stats.length; j++){
+            for (int i = 0; i < numberOfPlayers; i++){
+                if (listOfPlayers.get(i).getIsFirst() == true){
+                    table.append(border).append(stats[j]).
+                    append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
+                    append("   ").
+                    append(border).append(" ");
+                    
+                } else {
+                    table.append(border).append(stats[j]).
+                    append(" -").append("   ").
+                    append(border).append(" ");
+                }
+            }
 
+        }
         
         
     }
@@ -75,4 +92,5 @@ public class View{
 
         return borders.toString();
     }
+
 }
