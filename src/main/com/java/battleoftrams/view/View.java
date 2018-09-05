@@ -5,17 +5,6 @@ import java.util.List;
 import main.com.java.battleoftrams.model.Player;
 import main.com.java.battleoftrams.model.Card;
 
-//    Name1 (15)       Name2 (15)       Name3 (15)       Name4 (15) 
-
-// ***************  ***************  ***************  ***************
-// * Line   24   *  * Line   10   *  * Line   19   *  * Line   08   *
-// ***************  ***************  ***************  ***************
-// * Time   40   *  * Time   60   *  * Time   45   *  * Time   75   *
-// * Żule   05   *  * Żule   12   *  * Żule   07   *  * Żule   09   *
-// * MRF    34   *  * MRF    34   *  * MRF    34   *  * MRF    34   *
-// * Kanary 12   *  * Kanary 08   *  * Kanary 12   *  * Kanary 12   *
-// ***************  ***************  ***************  ***************
-
 public class View{
     private String whiteSpace = " ";
     private String border = "*";
@@ -46,16 +35,40 @@ public class View{
         System.out.println(status);
     }
 
+
+//    Name1 (15)       Name2 (15)       Name3 (15)       Name4 (15) 
+
+// ***************  ***************  ***************  ***************
+// * Line   24   *  * Line   10   *  * Line   19   *  * Line   08   *
+// ***************  ***************  ***************  ***************
+// * Time   40   *  * Time   60   *  * Time   45   *  * Time   75   *
+// * Żule   05   *  * Żule   12   *  * Żule   07   *  * Żule   09   *
+// * MRF    34   *  * MRF    34   *  * MRF    34   *  * MRF    34   *
+// * Kanary 12   *  * Kanary 08   *  * Kanary 12   *  * Kanary 12   *
+// ***************  ***************  ***************  ***************
+
     public void printCards(List<Player> listOfPlayers){
-        StringBuilder table = StringBuilder();
+        StringBuilder table = new StringBuilder();
         table.append(cardBorders()).append("\n");
-        table.append(border).append(" LINE   ")
-        .append(listOfPlayers.get(0).getPlayerDeck().get(0).getCardType())
-        .append("  ").append(border).append(" ");
+        for (int i = 0; i < numberOfPlayers; i++){
+            table.append(border).append(" LINE   ")
+            .append(listOfPlayers.get(i).getPlayerDeck().get(0).getCardType())
+            .append("   ").append(border).append(" ");
+        }
+        table.append("\n");
+        table.append(cardBorders());
         
     }
 
-    private String cardBorders(){
-        return String.format("%15s   %15s   %15s    %15s", border, border, border, border);
+    public String cardBorders(){
+        StringBuilder borders = new StringBuilder();
+        for (int j = 0; j < numberOfPlayers; j++){
+            for (int i = 0; i < sizeOfCard; i++){
+                borders.append("*");
+            }
+            borders.append("  ");
+        }
+
+        return borders.toString();
     }
 }
