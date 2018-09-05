@@ -1,7 +1,7 @@
 package main.com.java.battleoftrams.model;
 
 public class TramLine_19_Card extends Card {
-    String cardType = "Line no.19";
+    String cardType = "19";
 
     TramLine_19_Card(int[] characteristics) {
         super(characteristics);
