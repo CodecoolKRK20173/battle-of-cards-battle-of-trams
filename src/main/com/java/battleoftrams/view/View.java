@@ -11,6 +11,8 @@ public class View{
     private String leftBracket = "(";
     private String rightBracket = ")";
     private int numberOfPlayers = 4;
+    private int sizeOfCard = 15;
+
 
     public void printMenu(){
         System.out.println("Menu:\n\t 1. Play\n\t 2. How to play\n\t 3. Quit");
@@ -57,10 +59,12 @@ public class View{
         }
         table.append("\n");
         table.append(cardBorders());
+
+        
         
     }
 
-    public String cardBorders(){
+    private String cardBorders(){
         StringBuilder borders = new StringBuilder();
         for (int j = 0; j < numberOfPlayers; j++){
             for (int i = 0; i < sizeOfCard; i++){
