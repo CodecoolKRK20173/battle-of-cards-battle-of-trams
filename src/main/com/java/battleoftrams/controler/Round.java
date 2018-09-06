@@ -74,13 +74,13 @@ public class Round {
     public void startRound() {
 
         while(!checkForLooser()) {
-            System.out.println("hahaha");
             Player firstPlayer = getFirstPlayer();
             view.printStatusOfPlayers(playersList);
             view.printCards(playersList, false);
             selectedCharacteristic = getCharacteristicFromPlayer();
             view.printStatusOfPlayers(playersList);
             view.printCards(playersList, true);
+            if (checkForLooser()) break;
             TreeMap<Card, Player> firstCards = getFirstCards();
             String roundWinner = firstCards.get(firstCards.lastKey()).getName();
             for (Player player : playersList) {
@@ -90,9 +90,10 @@ public class Round {
                 } else {
                     player.setIsFirst(false);
                 }
-            }      
+            }
 
         }
+        view.printErrorMessage();
     }
    
 

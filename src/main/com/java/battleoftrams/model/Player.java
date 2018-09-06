@@ -2,6 +2,7 @@ package main.com.java.battleoftrams.model;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public abstract class Player implements Comparable<Player> {
 
@@ -57,11 +58,14 @@ public abstract class Player implements Comparable<Player> {
         copiedPlayerList.remove(p);
 
         for (Player player : copiedPlayerList) {
+            
             Card card = player.playerDeck.getFirst();
             p.playerDeck.add(p.playerDeck.getFirst());
             p.playerDeck.removeFirst();
             player.playerDeck.removeFirst();
             p.playerDeck.addLast(card);
+                  
+            
         }
 
     }
