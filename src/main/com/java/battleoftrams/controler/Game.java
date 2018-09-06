@@ -48,13 +48,17 @@ public class Game {
 
     public void createPlayers(int numberOfHumanPlayers, Scanner sc) {
         for (int i = 0; i < numberOfHumanPlayers; i++) {
+            String playerNumber = Integer.toString(i + 1);
             view.printQuestionPlayerName();
+            view.printMessageWithNewLine(playerNumber + " (human)");
             String humanName = sc.next();
             playersList.add(new Human(humanName));
         }
 
         for (int i = 0; i < 4 - numberOfHumanPlayers; i++) {
+            String playerNumber = Integer.toString(numberOfHumanPlayers + i + 1);
             view.printQuestionPlayerName();
+            view.printMessageWithNewLine(playerNumber + " (computer)");
             String computerName = sc.next();
             playersList.add(new Computer(computerName));
         }

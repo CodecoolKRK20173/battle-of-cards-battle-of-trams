@@ -1,5 +1,6 @@
 package main.com.java.battleoftrams.controler;
 
+import java.util.concurrent.TimeUnit;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,12 +28,11 @@ public class Round {
         boolean flag = false;
         for (Player player : playersList) {
             if (player.getPlayerDeckSize() == 0) {
-                flag = true;
+                return true;
             } else {
                 flag = false;
             }
         }
-
         return flag;
     }
 
@@ -63,7 +63,7 @@ public class Round {
 
     public Player checkTheWinner() {
         Collections.sort(playersList);
-        return playersList.getFirst();
+        return playersList.getLast();
     }
 
     public void setFirstPlayer() {
@@ -75,18 +75,26 @@ public class Round {
 
         while(!checkForLooser()) {
             Player firstPlayer = getFirstPlayer();
-
+            view.printMessage("Let's begin a new round:");
             view.printStatusOfPlayers(playersList);
             view.printCards(playersList, false);
+            view.printMessage("And stat will be chosen by player: " 
+                    + firstPlayer.getName());
             selectedCharacteristic = firstPlayer.selectCharacteristic(sc);
+            view.printPlayerChoose(selectedCharacteristic);
+            view.printMessage("And what do others have:");
             view.printStatusOfPlayers(playersList);
             view.printCards(playersList, true);
-            if (checkForLooser()) {
-                view.printGameOver(playersList);
-                break;
+            
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch(InterruptedException e) {
+                e.printStackTrace();
             }
             TreeMap<Card, Player> firstCards = getFirstCards();
             String roundWinner = firstCards.get(firstCards.lastKey()).getName();
+            view.printMessage("In this round the winner is " + roundWinner + "!");
+
             for (Player player : playersList) {
                 if (player.getName().equals(roundWinner)) {
                     player.addCardsWhenWin(playersList, player);
@@ -97,7 +105,7 @@ public class Round {
             }
 
         }
-        view.printErrorMessage();
+        view.printGameOver(checkTheWinner());
     }
    
 
