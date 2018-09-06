@@ -80,6 +80,8 @@ public class View{
             }
         }
         
+        System.out.println(table);
+        
     }
 
     private String cardBorders(){
@@ -93,8 +95,6 @@ public class View{
 
         return borders.toString();
     }
-
-    // print na co walczymy
 
     public String printLogo(){
         return logo;
