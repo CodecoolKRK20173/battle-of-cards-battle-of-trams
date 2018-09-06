@@ -10,6 +10,10 @@ public class Game {
 
     private LinkedList<Player> playersList;
 
+    public Game(){
+        
+    }
+
     public LinkedList getPlayersList() {
         return playersList;
     }
