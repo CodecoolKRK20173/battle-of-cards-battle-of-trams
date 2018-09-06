@@ -80,7 +80,10 @@ public class Round {
             selectedCharacteristic = getCharacteristicFromPlayer();
             view.printStatusOfPlayers(playersList);
             view.printCards(playersList, true);
-            if (checkForLooser()) break;
+            if (checkForLooser()) {
+                view.printGameOver(playersList);
+                break;
+            }
             TreeMap<Card, Player> firstCards = getFirstCards();
             String roundWinner = firstCards.get(firstCards.lastKey()).getName();
             for (Player player : playersList) {
