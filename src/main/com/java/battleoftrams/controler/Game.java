@@ -123,7 +123,7 @@ public class Game {
                 play(sc);
                 break;
             case 2:
-                view.printHowToPlay();
+                view.printHowTo();
                 break;
             case 3:
                 exit = true;
