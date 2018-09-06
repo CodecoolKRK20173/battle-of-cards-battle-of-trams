@@ -75,9 +75,10 @@ public class Round {
 
         while(!checkForLooser()) {
             Player firstPlayer = getFirstPlayer();
+
             view.printStatusOfPlayers(playersList);
             view.printCards(playersList, false);
-            selectedCharacteristic = getCharacteristicFromPlayer();
+            selectedCharacteristic = firstPlayer.selectCharacteristic(sc);
             view.printStatusOfPlayers(playersList);
             view.printCards(playersList, true);
             if (checkForLooser()) break;

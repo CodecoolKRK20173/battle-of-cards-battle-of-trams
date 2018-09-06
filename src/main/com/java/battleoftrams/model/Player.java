@@ -3,6 +3,7 @@ package main.com.java.battleoftrams.model;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public abstract class Player implements Comparable<Player> {
 
@@ -75,6 +76,6 @@ public abstract class Player implements Comparable<Player> {
         return this.getPlayerDeckSize() - two.getPlayerDeckSize();
     }
 
-    public abstract String selectCharacteristic();
+    public abstract String selectCharacteristic(Scanner scanner);
 
 }
