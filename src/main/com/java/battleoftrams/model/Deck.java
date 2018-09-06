@@ -1,6 +1,7 @@
 package main.com.java.battleoftrams.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public class Deck {
 	    int indexOfTramNo10 = 1;
 	    int indexOfTramNo19 = 2;
 	    int indexOfTramNo24 = 3;
-        deck = new ArrayList<>();
+        deck = new LinkedList<>();
         Random random = new Random();
 
         for (int i = 0; i < deckSize; i++) {
