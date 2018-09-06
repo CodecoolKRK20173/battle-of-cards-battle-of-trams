@@ -34,7 +34,7 @@ public class View{
     public void printStatusOfPlayers(List<Player> listOfPlayers){
         String status = "";
         for (int i = 0; i < numberOfPlayers; i++){
-            status += String.format("%s %5s %s %2d %s %4s ", 
+            status += String.format("%s %5s %s%2d%s %4s ", 
             whiteSpace, listOfPlayers.get(i).getName(), 
             leftBracket, listOfPlayers.get(i).getPlayerDeckSize(), 
             rightBracket, whiteSpace);
@@ -74,12 +74,12 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                         
                     } else {
                         table.append(border).append(stats[statsIndex]).
                         append(" -").append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                     }
                 }
                 table.append("\n");
@@ -89,12 +89,12 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getZulCount()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                         
                     } else {
                         table.append(border).append(stats[statsIndex]).
                         append(" -").append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                     }
                 }
                 table.append("\n");
@@ -104,12 +104,12 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getDriverRudeness()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                         
                     } else {
                         table.append(border).append(stats[statsIndex]).
                         append(" -").append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                     }
                 }
                 table.append("\n");
@@ -119,12 +119,12 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getKanarCount()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                         
                     } else {
                         table.append(border).append(stats[statsIndex]).
                         append(" -").append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                     }
                 }
                 table.append("\n");
@@ -137,7 +137,7 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                         
                     
                 }
@@ -149,7 +149,7 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getZulCount()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
                         
                
                 }
@@ -161,7 +161,7 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getDriverRudeness()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
               
                 }
                 table.append("\n");
@@ -172,7 +172,7 @@ public class View{
                         table.append(border).append(stats[statsIndex]).
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getKanarCount()).
                         append("   ").
-                        append(border).append(" ");
+                        append(border).append("  ");
               
                 }
                 table.append("\n");
