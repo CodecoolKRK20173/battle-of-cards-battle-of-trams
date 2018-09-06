@@ -1,12 +1,18 @@
 package main.com.java.battleoftrams.view;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.LinkedList;
 
-import main.com.java.battleoftrams.model.Player;
 import main.com.java.battleoftrams.model.*;
 
 public class View{
+    private final String LOGOLINK = "resources/logo.txt";
+    private final String HOWTOLINK = "resources/howto.txt";
+    private final String CONGRATSLINK = "resources/congrats.txt";
     private String whiteSpace = " ";
     private String border = "*";
     private String leftBracket = "(";
@@ -60,7 +66,7 @@ public class View{
         for (int i = 0; i < numberOfPlayers; i++){
             table.append(border).append(" LINE   ")
             .append(listOfPlayers.get(i).getPlayerDeck().get(0).getCardType())
-            .append("   ").append(border).append(" ");
+            .append("   ").append(border).append("  ");
         }
         table.append("\n");
         table.append(cardBorders());
@@ -200,8 +206,48 @@ public class View{
         return borders.toString();
     }
 
-    public String printLogo(){
-        return "logo";
+    public void printLogo() {
+        System.out.println(getStringFromFile(LOGOLINK));
+    }
+
+    public void printHowTo() {
+        System.out.println(getStringFromFile(HOWTOLINK));
+    }
+    
+    public void printGameOver(List<Player> listOfPlayers) {
+        StringBuilder winMessage = new StringBuilder();
+        String congratulations = getStringFromFile(CONGRATSLINK);
+        int rankNumber = 1;
+        Collections.sort(listOfPlayers);
+    
+        winMessage.append(cardBorders()).append("\n\n");
+        winMessage.append(congratulations).append("\n\n");  
+    
+        for (Player player : listOfPlayers) {
+            winMessage.append(rankNumber + ". " + player.getName() + "\n");    
+        }
+        winMessage.append("\n\n").append(cardBorders()); 
+        
+        System.out.println(winMessage.toString());
+    }
+    
+    public String getStringFromFile(String fileName) {
+        StringBuilder content = new StringBuilder();
+    
+            try {
+                BufferedReader buffReader = new BufferedReader(new FileReader(fileName));
+    
+                String line;
+                while ((line = buffReader.readLine()) != null) {
+                content.append(line + "\n");
+                }
+                buffReader.close();         
+            } catch(IOException exception) {
+                exception.printStackTrace();
+            }
+            return content.toString();
+        
+    
     }
 
 }
