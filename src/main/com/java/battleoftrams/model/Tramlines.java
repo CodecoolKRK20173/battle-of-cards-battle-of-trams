@@ -3,10 +3,10 @@ package main.com.java.battleoftrams.model;
 import java.util.concurrent.ThreadLocalRandom;
 
 public enum Tramlines {
-    Line_8   (1, 10, 1, 10, 1, 10, 1, 10),      // These
-    Line_10  (1, 10, 1, 10, 1, 10, 1, 10),      // will
-    Line_19  (1, 10, 1, 10, 1, 10, 1, 10),      // be
-    Line_24  (1, 10, 1, 10, 1, 10, 1, 10);      // varied
+    Line_8   (25, 50, 5, 10, 10, 25, 15, 30),
+    Line_10  (30, 60, 5, 15, 1, 10, 5, 10),
+    Line_19  (20, 40, 2, 6, 5, 15, 5, 10),
+    Line_24  (30, 60, 1, 5, 5, 10, 1, 5);
 
     private final int minTravelTime;
     private final int maxTravelTime;
@@ -75,16 +75,3 @@ public enum Tramlines {
     }
 
 }
-
-/* HOW TO USE IT:
-
--> In order to create card subclass instance with use of this enum, first call
-   enum method to create random characteristics and assign it to an array, e.g.:
-
-int[] some_card_number_8_characteristics = Tramlines.Line_8.setCharacteristics(Tramlines.Line_8);
-
--> And than just create instance of a card passing to its constructor created array as a parameter , e.g.:
-
-Card card8 = new TramLine_8_Card(some_card_number_8_characteristics);
-
-*/
