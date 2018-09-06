@@ -16,13 +16,13 @@ public abstract class Card implements Comparable{
         this.kanarCount = characteristics[3];
     }
 
-    abstract String getCardType();
+    public abstract String getCardType();
 
     public int getTravelTime() {
         return travelTime;
     }
 
-    public int getZulCunt() {
+    public int getZulCount() {
         return zulCount;
     }
 
@@ -34,17 +34,17 @@ public abstract class Card implements Comparable{
         return kanarCount;
     }
 
-    @Override // Requires static method getSelectedCharasteristic in Game/Round class
+    @Override
     public int compareTo(Object object) {
         Card card = (Card) object;
 
-        if (Round.getSelectedCharasteristic.equals("travelTime")) {
+        if (Round.selectedCharacteristic.equals("travelTime")) {
             return this.travelTime - card.travelTime;
-        } else if (Round.getSelectedCharasteristic.equals("zulCount")) {
+        } else if (Round.selectedCharacteristic.equals("zulCount")) {
             return this.zulCount - card.zulCount;
-        } else if (Round.getSelectedCharasteristic.equals("driverRudeness")) {
+        } else if (Round.selectedCharacteristic.equals("driverRudeness")) {
             return this.driverRudeness - card.driverRudeness;
-        } else if (Round.getSelectedCharasteristic.equals("kanarCount")) {
+        } else {
             return this.kanarCount - card.kanarCount;
         }
     }

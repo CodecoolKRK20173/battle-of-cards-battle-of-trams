@@ -6,19 +6,20 @@ import java.util.List;
 import java.util.Random;
 
 public class Deck {
-    private List<Card> deck;
+    private LinkedList<Card> deck;
     int deckSize;
 
     public Deck() {
         this.deckSize = 60;
+        deck = new LinkedList<Card>();
     }
 
     public Deck(int deckSize) {
         this.deckSize = deckSize;
     }
 
-    public List<Card> getDeck() {
-        return deck;
+    public LinkedList<Card> getDeck() {
+        return this.deck;
     }
 
     public void createDeck() {
@@ -26,7 +27,7 @@ public class Deck {
 	    int indexOfTramNo10 = 1;
 	    int indexOfTramNo19 = 2;
 	    int indexOfTramNo24 = 3;
-        deck = new LinkedList<>();
+        
         Random random = new Random();
 
         for (int i = 0; i < deckSize; i++) {

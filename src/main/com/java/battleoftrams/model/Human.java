@@ -4,13 +4,13 @@ import main.com.java.battleoftrams.controler.Round;
 
 public class Human extends Player {
 
-    public Human() {
-        super();
+    public Human(String name) {
+        super(name);
     }
 
     @Override
     public String selectCharacteristic() {
-        return Round.selectCharacteristic;
+        return Round.selectedCharacteristic;
     }
 
 }

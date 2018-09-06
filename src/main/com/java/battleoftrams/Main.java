@@ -1,6 +1,6 @@
 package main.com.java.battleoftrams;
 
-import main.java.com.java.cardgame.Game;
+import main.com.java.battleoftrams.controler.Game;
 
 public class Main{
     public static void main(String[] args) {

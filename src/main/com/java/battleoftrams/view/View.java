@@ -1,9 +1,10 @@
 package main.com.java.battleoftrams.view;
 
 import java.util.List;
+import java.util.LinkedList;
 
 import main.com.java.battleoftrams.model.Player;
-import main.com.java.battleoftrams.model.Card;
+import main.com.java.battleoftrams.model.*;
 
 public class View{
     private String whiteSpace = " ";
@@ -19,7 +20,7 @@ public class View{
     }
 
     public void printQuestionNumberOfPlayers(){
-        System.out.println("Enter number of players (max 4): ");
+        System.out.println("Enter number of human players (max 4): ");
     }
 
     public void printQuestionPlayerName(){
@@ -52,7 +53,7 @@ public class View{
 // * Kanary 12   *  * Kanary 08   *  * Kanary 12   *  * Kanary 12   *
 // ***************  ***************  ***************  ***************
 
-    public void printCards(List<Player> listOfPlayers){
+    public void printCards(LinkedList<Player> listOfPlayers, boolean showOpponentCards){
         StringBuilder table = new StringBuilder();
         String [] stats = {" Time   ", " Żule   ", " MRF    ", " Kanary "};
         table.append(cardBorders()).append("\n");
@@ -64,25 +65,128 @@ public class View{
         table.append("\n");
         table.append(cardBorders());
         table.append("\n");
-        for (int j = 0; j < stats.length; j++){
-            for (int i = 0; i < numberOfPlayers; i++){
-                if (listOfPlayers.get(i).getIsFirst() == true){
-                    table.append(border).append(stats[j]).
-                    append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
-                    append("   ").
-                    append(border).append(" ");
-                    
-                } else {
-                    table.append(border).append(stats[j]).
-                    append(" -").append("   ").
-                    append(border).append(" ");
+        
+        if (!showOpponentCards) {
+            //for (int j = 0; j < stats.length; j++){
+                int statsIndex = 0;
+                for (int i = 0; i < numberOfPlayers; i++){
+                    if (listOfPlayers.get(i).getIsFirst() == true){
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
+                        append("   ").
+                        append(border).append(" ");
+                        
+                    } else {
+                        table.append(border).append(stats[statsIndex]).
+                        append(" -").append("   ").
+                        append(border).append(" ");
+                    }
                 }
-            }
-        }
+                table.append("\n");
+                statsIndex++;
+                for (int i = 0; i < numberOfPlayers; i++){
+                    if (listOfPlayers.get(i).getIsFirst() == true){
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getZulCount()).
+                        append("   ").
+                        append(border).append(" ");
+                        
+                    } else {
+                        table.append(border).append(stats[statsIndex]).
+                        append(" -").append("   ").
+                        append(border).append(" ");
+                    }
+                }
+                table.append("\n");
+                statsIndex++;
+                for (int i = 0; i < numberOfPlayers; i++){
+                    if (listOfPlayers.get(i).getIsFirst() == true){
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getDriverRudeness()).
+                        append("   ").
+                        append(border).append(" ");
+                        
+                    } else {
+                        table.append(border).append(stats[statsIndex]).
+                        append(" -").append("   ").
+                        append(border).append(" ");
+                    }
+                }
+                table.append("\n");
+                statsIndex++;
+                for (int i = 0; i < numberOfPlayers; i++){
+                    if (listOfPlayers.get(i).getIsFirst() == true){
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getKanarCount()).
+                        append("   ").
+                        append(border).append(" ");
+                        
+                    } else {
+                        table.append(border).append(stats[statsIndex]).
+                        append(" -").append("   ").
+                        append(border).append(" ");
+                    }
+                }
+                table.append("\n");
+            //}
+        } else {
+            // for (int j = 0; j < stats.length; j++){
+                int statsIndex = 0;
+                for (int i = 0; i < numberOfPlayers; i++){
+                    
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
+                        append("   ").
+                        append(border).append(" ");
+                        
+                    
+                }
+                table.append("\n");
+                statsIndex++;
 
+                for (int i = 0; i < numberOfPlayers; i++){
+                    
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getZulCount()).
+                        append("   ").
+                        append(border).append(" ");
+                        
+               
+                }
+                table.append("\n");
+                statsIndex++;
+
+                for (int i = 0; i < numberOfPlayers; i++){
+                    
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getDriverRudeness()).
+                        append("   ").
+                        append(border).append(" ");
+              
+                }
+                table.append("\n");
+                statsIndex++;
+
+                for (int i = 0; i < numberOfPlayers; i++){
+                   
+                        table.append(border).append(stats[statsIndex]).
+                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getKanarCount()).
+                        append("   ").
+                        append(border).append(" ");
+              
+                }
+                table.append("\n");
+                
+            // }
+
+        }
         System.out.println(table);
         
     }
+
+    public void printHowToPlay() {}
+    
+    public void printErrorMessage() {}
 
     private String cardBorders(){
         StringBuilder borders = new StringBuilder();
@@ -97,7 +201,7 @@ public class View{
     }
 
     public String printLogo(){
-        return logo;
+        return "logo";
     }
 
 }

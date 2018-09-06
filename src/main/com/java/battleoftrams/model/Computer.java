@@ -2,11 +2,12 @@ package main.com.java.battleoftrams.model;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Arrays;
 
 public class Computer extends Player {
 
-    public Computer() {
-        super();
+    public Computer(String name) {
+        super(name);
     }
 
     @Override
@@ -14,7 +15,8 @@ public class Computer extends Player {
         List<String> characteristicsList = Arrays.asList("travelTime", "zulCount", "driverRudeness", "canarCount");
         Random rand = new Random();
         int randomIndex = rand.nextInt(4);
-        characteristicsList.get(randomIndex);
+        return characteristicsList.get(randomIndex);
+
     }
 
 }

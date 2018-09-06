@@ -3,8 +3,6 @@ package main.com.java.battleoftrams.model;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.smartcardio.Card;
-
 public abstract class Player implements Comparable<Player> {
 
     private String name;
@@ -12,11 +10,9 @@ public abstract class Player implements Comparable<Player> {
     private LinkedList<Card> playerDeck;
     private boolean isFirst;
 
-    public Player() {
+    public Player(String name) {
         this.name = name;
-        this.indexOfPlayer = indexOfPlayer;
-        this.playerDeck = playerDeck;
-        this.isFirst = isFirst;
+        this.playerDeck = new LinkedList<Card>();
     }
 
     public String getName() {
@@ -35,11 +31,11 @@ public abstract class Player implements Comparable<Player> {
         this.indexOfPlayer = indexOfPlayer;
     }
 
-    public List getPlayerDeck() {
+    public LinkedList<Card> getPlayerDeck() {
         return this.playerDeck;
     }
 
-    public void setPlayerDeck(List playerDeck) {
+    public void setPlayerDeck(LinkedList<Card> playerDeck) {
         this.playerDeck = playerDeck;
     }
 
@@ -57,12 +53,14 @@ public abstract class Player implements Comparable<Player> {
 
     public void addCardsWhenWin(LinkedList<Player> playersList, Player p) {
 
-        LinkedList<Player> copiedPlayerList = new LinkedList() < Player > (playersList);
+        LinkedList<Player> copiedPlayerList = new LinkedList<Player> (playersList);
         copiedPlayerList.remove(p);
 
         for (Player player : copiedPlayerList) {
-            Card card = player.playerDeck.getLast();
-            player.playerDeck.removeLast();
+            Card card = player.playerDeck.getFirst();
+            p.playerDeck.add(p.playerDeck.getFirst());
+            p.playerDeck.removeFirst();
+            player.playerDeck.removeFirst();
             p.playerDeck.addLast(card);
         }
 

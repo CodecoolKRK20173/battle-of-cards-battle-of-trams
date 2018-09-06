@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
+import main.com.java.battleoftrams.model.Card;
 import main.com.java.battleoftrams.model.Computer;
+import main.com.java.battleoftrams.model.Deck;
 import main.com.java.battleoftrams.model.Human;
 import main.com.java.battleoftrams.model.Player;
 import main.com.java.battleoftrams.view.View;
@@ -20,6 +23,7 @@ public class Game {
     public Game() {
         this.deck = new Deck();
         this.view = new View();
+        this.playersList = new LinkedList<>();
     }
 
     public LinkedList getPlayersList() {
@@ -42,13 +46,17 @@ public class Game {
         return playersList.size();
     }
 
-    public void createPlayers(int numberOfHumanPlayers) {
+    public void createPlayers(int numberOfHumanPlayers, Scanner sc) {
         for (int i = 0; i < numberOfHumanPlayers; i++) {
-            playersList.add(new Human());
+            view.printQuestionPlayerName();
+            String humanName = sc.next();
+            playersList.add(new Human(humanName));
         }
 
         for (int i = 0; i < 4 - numberOfHumanPlayers; i++) {
-            playersList.add(new Computer());
+            view.printQuestionPlayerName();
+            String computerName = sc.next();
+            playersList.add(new Computer(computerName));
         }
     }
 
@@ -65,7 +73,8 @@ public class Game {
         int upperBound = 15;
 
         for (Player player : playersList) {
-            player.setPlayerDeck(deck.getDeck().subList(downBound, upperBound));
+            LinkedList<Card> cardList = new LinkedList<>(deck.getDeck().subList(downBound, upperBound));
+            player.setPlayerDeck(cardList);
             downBound += 15;
             upperBound += 15;
         }
@@ -73,7 +82,7 @@ public class Game {
 
     private int getUserMenuInput(Scanner sc, int menuBounds) {
         boolean correctInput = false;
-        int choice;
+        int choice = 0;
         while (!correctInput) {
             try {
                 choice = sc.nextInt();
@@ -86,14 +95,19 @@ public class Game {
                 return choice;
             }
         }
+        return choice;
     }
 
     private void play(Scanner sc) {
+        Round round = new Round(playersList, sc, view);
+
         view.printQuestionNumberOfPlayers();
         int numberOfHumanPlayers = getUserMenuInput(sc, 5);
-        createPlayers(numberOfHumanPlayers);
+        deck.createDeck();
+        createPlayers(numberOfHumanPlayers, sc);
         Player firstPlayer = getFirstRanomPlayer();
         dealCards();
+        round.startRound();
     }
 
     public void start() {
