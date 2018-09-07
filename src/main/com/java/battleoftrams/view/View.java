@@ -104,15 +104,9 @@ public class View{
         if (!showOpponentCards) {
                 int statsIndex = 0;
                 for (int i = 0; i < numberOfPlayers; i++){
-                    if (listOfPlayers.get(i).getIsFirst() == true){
-                        String digitWithZero = "";
-                        if (listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime() < 9){
-                            digitWithZero = String.format("%02d", listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime());   
-                        } else {
-                            digitWithZero = String.format("%d", listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()); ;
-                        }
+                    if (listOfPlayers.get(i).getIsFirst() == true){                     
                         table.append(border).append(stats[statsIndex]).
-                        append(digitWithZero).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
                         
@@ -127,7 +121,7 @@ public class View{
                 for (int i = 0; i < numberOfPlayers; i++){
                     if (listOfPlayers.get(i).getIsFirst() == true){
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getZulCount()).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
                         
@@ -142,7 +136,7 @@ public class View{
                 for (int i = 0; i < numberOfPlayers; i++){
                     if (listOfPlayers.get(i).getIsFirst() == true){
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getDriverRudeness()).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
                         
@@ -157,7 +151,7 @@ public class View{
                 for (int i = 0; i < numberOfPlayers; i++){
                     if (listOfPlayers.get(i).getIsFirst() == true){
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getKanarCount()).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
                         
@@ -173,7 +167,7 @@ public class View{
                 for (int i = 0; i < numberOfPlayers; i++){
                     
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
                 }
@@ -183,7 +177,7 @@ public class View{
                 for (int i = 0; i < numberOfPlayers; i++){
                     
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getZulCount()).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
                 }
@@ -193,7 +187,7 @@ public class View{
                 for (int i = 0; i < numberOfPlayers; i++){
                     
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getDriverRudeness()).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
               
@@ -204,7 +198,7 @@ public class View{
                 for (int i = 0; i < numberOfPlayers; i++){
                    
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getKanarCount()).
+                        append(statsDigitBuilder(i, listOfPlayers)).
                         append("   ").
                         append(border).append("  ");
               
