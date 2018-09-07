@@ -53,6 +53,41 @@ public class View{
 // * Kanary 12   *  * Kanary 08   *  * Kanary 12   *  * Kanary 12   *
 // ***************  ***************  ***************  ***************
 
+    private String statsDigitBuilder(int statsChoice, LinkedList<Player> listOfPlayers){
+        String digitWithZero = "";
+        if (statsChoice == 0){
+            if (listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getTravelTime() < 9){
+                digitWithZero = String.format("%02d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getTravelTime());   
+            } else {
+                digitWithZero = String.format("%d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getTravelTime()); ;
+            }
+        } else if (statsChoice == 1) {
+            if (listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getTravelTime() < 9){
+                digitWithZero = String.format("%02d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getZulCount());   
+            } else {
+                digitWithZero = String.format("%d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getZulCount()); ;
+            }
+
+        }  else if (statsChoice == 2) {
+            if (listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getTravelTime() < 9){
+                digitWithZero = String.format("%02d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getDriverRudeness());   
+            } else {
+                digitWithZero = String.format("%d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getDriverRudeness()); ;
+            } 
+        } else if (statsChoice == 3) {
+            if (listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getTravelTime() < 9){
+                digitWithZero = String.format("%02d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getKanarCount());   
+            } else {
+                digitWithZero = String.format("%d", listOfPlayers.get(statsChoice).getPlayerDeck().get(0).getKanarCount()); ;
+            }
+        } else {
+            printErrorMessage();
+        }
+
+        return digitWithZero;
+
+    }
+
     public void printCards(LinkedList<Player> listOfPlayers, boolean showOpponentCards){
         StringBuilder table = new StringBuilder();
         String [] stats = {" Time   ", " Żule   ", " MRF    ", " Kanary "};
@@ -60,19 +95,24 @@ public class View{
         for (int i = 0; i < numberOfPlayers; i++){
             table.append(border).append(" LINE   ")
             .append(listOfPlayers.get(i).getPlayerDeck().get(0).getCardType())
-            .append("   ").append(border).append(" ");
+            .append("   ").append(border).append("  ");
         }
         table.append("\n");
         table.append(cardBorders());
         table.append("\n");
         
         if (!showOpponentCards) {
-            //for (int j = 0; j < stats.length; j++){
                 int statsIndex = 0;
                 for (int i = 0; i < numberOfPlayers; i++){
                     if (listOfPlayers.get(i).getIsFirst() == true){
+                        String digitWithZero = "";
+                        if (listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime() < 9){
+                            digitWithZero = String.format("%02d", listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime());   
+                        } else {
+                            digitWithZero = String.format("%d", listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()); ;
+                        }
                         table.append(border).append(stats[statsIndex]).
-                        append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
+                        append(digitWithZero).
                         append("   ").
                         append(border).append("  ");
                         
@@ -128,9 +168,7 @@ public class View{
                     }
                 }
                 table.append("\n");
-            //}
         } else {
-            // for (int j = 0; j < stats.length; j++){
                 int statsIndex = 0;
                 for (int i = 0; i < numberOfPlayers; i++){
                     
@@ -138,8 +176,6 @@ public class View{
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getTravelTime()).
                         append("   ").
                         append(border).append("  ");
-                        
-                    
                 }
                 table.append("\n");
                 statsIndex++;
@@ -150,8 +186,6 @@ public class View{
                         append(listOfPlayers.get(i).getPlayerDeck().get(0).getZulCount()).
                         append("   ").
                         append(border).append("  ");
-                        
-               
                 }
                 table.append("\n");
                 statsIndex++;
@@ -176,17 +210,16 @@ public class View{
               
                 }
                 table.append("\n");
-                
-            // }
 
         }
-        System.out.println(table);
-        
+        System.out.println(table); 
     }
 
     public void printHowToPlay() {}
     
-    public void printErrorMessage() {}
+    public void printErrorMessage() {
+        System.out.println("Please try again");
+    }
 
     private String cardBorders(){
         StringBuilder borders = new StringBuilder();
