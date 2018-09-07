@@ -38,14 +38,16 @@ public abstract class Card implements Comparable{
     public int compareTo(Object object) {
         Card card = (Card) object;
 
-        if (Round.selectedCharacteristic.equals("travelTime")) {
+        if (Round.selectedCharacteristic.equals("time")) {
             return this.travelTime - card.travelTime;
-        } else if (Round.selectedCharacteristic.equals("zulCount")) {
+        } else if (Round.selectedCharacteristic.equals("zule")) {
             return this.zulCount - card.zulCount;
-        } else if (Round.selectedCharacteristic.equals("driverRudeness")) {
+        } else if (Round.selectedCharacteristic.equals("driver")) {
             return this.driverRudeness - card.driverRudeness;
-        } else {
+        } else if (Round.selectedCharacteristic.equals("kanary")) {
             return this.kanarCount - card.kanarCount;
+        } else {
+            return 0;
         }
     }
 

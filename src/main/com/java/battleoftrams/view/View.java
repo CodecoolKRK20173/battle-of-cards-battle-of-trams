@@ -1,12 +1,18 @@
 package main.com.java.battleoftrams.view;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.LinkedList;
 
-import main.com.java.battleoftrams.model.Player;
 import main.com.java.battleoftrams.model.*;
 
 public class View{
+    private final String LOGOLINK = "resources/logo.txt";
+    private final String HOWTOLINK = "resources/howto.txt";
+    private final String CONGRATSLINK = "resources/congrats.txt";
     private String whiteSpace = " ";
     private String border = "*";
     private String leftBracket = "(";
@@ -24,11 +30,23 @@ public class View{
     }
 
     public void printQuestionPlayerName(){
-        System.out.println("Enter your name (5 characters long)");
+        System.out.print("Enter name (5 characters long) for player ");
     }
 
     public void printQuestionStatsToCompare(){
-        System.out.println("Choose statistic to compare:");
+        System.out.println("Enter statistic to compare (time, zule, driver or kanary):");
+    }
+
+    public void printPlayerChoose(String choose) {
+        System.out.println("Player have chosen option " + choose + "\n");
+    }
+
+    public void printMessage(String message) {
+        System.out.println("\n" + message + "\n");
+    }
+
+    public void printMessageWithNewLine(String message) {
+        System.out.print(message + "\n");
     }
 
     public void printStatusOfPlayers(List<Player> listOfPlayers){
@@ -161,6 +179,7 @@ public class View{
                         append(border).append("  ");
                     }
                 }
+                table.append("\n" + cardBorders());
                 table.append("\n");
         } else {
                 int statsIndex = 0;
@@ -203,13 +222,12 @@ public class View{
                         append(border).append("  ");
               
                 }
+                table.append("\n" + cardBorders());
                 table.append("\n");
 
         }
         System.out.println(table); 
     }
-
-    public void printHowToPlay() {}
     
     public void printErrorMessage() {
         System.out.println("Please try again");
@@ -227,8 +245,44 @@ public class View{
         return borders.toString();
     }
 
-    public String printLogo(){
-        return "logo";
+    public void printLogo() {
+        System.out.println(getStringFromFile(LOGOLINK));
+    }
+
+    public void printHowTo() {
+        System.out.println(getStringFromFile(HOWTOLINK));
+    }
+    
+    public void printGameOver(Player winner) {
+        String congratulations = getStringFromFile(CONGRATSLINK);
+        StringBuilder winMessage = new StringBuilder();    
+    
+        winMessage.append(cardBorders()).append("\n\n");
+        winMessage.append(congratulations).append("\n\n");       
+        winMessage.append("And the winner is: " + winner.getName() + "\n");
+        winMessage.append("With total of " + winner.getPlayerDeckSize() + " cards in hand!\n");      
+        winMessage.append("\n\n").append(cardBorders()).append("\n\n"); 
+        
+        System.out.println(winMessage.toString());
+    }
+    
+    public String getStringFromFile(String fileName) {
+        StringBuilder content = new StringBuilder();
+    
+            try {
+                BufferedReader buffReader = new BufferedReader(new FileReader(fileName));
+    
+                String line;
+                while ((line = buffReader.readLine()) != null) {
+                content.append(line + "\n");
+                }
+                buffReader.close();         
+            } catch(IOException exception) {
+                exception.printStackTrace();
+            }
+            return content.toString();
+        
+    
     }
 
 }
