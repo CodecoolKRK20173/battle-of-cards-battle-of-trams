@@ -1,0 +1,15 @@
+  Game for 4 players with the option of choosing the number of human players. The cards 
+are shuffled and dealt. Each player can see only the top card. 
+
+  The player to the left of the dealer choose out any one of the four specifications on the 
+card: time (Time), zule (Żule), driver (MRF - Motorniczy Rudeness Factor) or kanary (Kanary).
+There are 4 types of cards which represent various tramlines from Cracow: 8, 10, 19 and 24. 
+For example, in trams of line 8 drivers are qute rude and You can meet often a kanar. In trams 
+on line 10 You can travel a long time and there are a lot of żuls. 
+
+  The other players checks out out the same specification from their top cards. The player with 
+the highest value takes the top card from the other players (including his own), and puts them 
+at the bottom of his cards.
+ 
+  That winner then reads out a specification from his new top card and the game continues. 
+The game ends when any player has no cards left, the winner is the player with most cards.

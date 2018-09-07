@@ -22,4 +22,4 @@
 hs_err_pid*
 
 #sources files
-sources.list
+*.list
